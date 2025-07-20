@@ -1,0 +1,12 @@
+rules:
+  - name: approve_adult_with_income
+    condition: "age >= 18 and income >= 50000"
+    action: "eligible = True; message = 'Approved based on age and income'"
+
+  - name: reject_minor
+    condition: "age < 18"
+    action: "eligible = False; message = 'Rejected due to age'"
+
+  - name: flag_rich_minor
+    condition: "age < 18 and income > 100000"
+    action: "flag = 'suspicious'; note = 'Minor with high income'"
