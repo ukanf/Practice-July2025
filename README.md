@@ -8,9 +8,17 @@ Repository structure:
 
 A rule engine uses rules, which are conditional statements, to evaluate inputs. By having rules in a yaml file we can more easily maintain the code for the engine and better scale to use different rules for different purposes (the engine just consumes the rules).
 
-### Raw code
+### Practice
 
-practice_1 and practice_2
+#### practice_1
+
+#### practice_2
+
+#### practice_3
+
+#### practice_4
+
+rules engine from pycon...
 
 ### Useful links and Libs..
 
@@ -32,7 +40,13 @@ Simple example with and without clipspy: https://www.youtube.com/watch?v=0HQSCXU
 #### PyCon Sweden
 PyCon Sweden: https://www.youtube.com/watch?v=Lsi1ZhmbNDc
 
-Rules Rule - 
+Rules Rule - practice_4
+
+https://martinfowler.com/bliki/RulesEngine.html
+
+https://pypi.org/project/funnel-rules-engine/
+
+https://github.com/funnel-io/funnel-rules-engine
 
 ## Durable Execution Engine
 
