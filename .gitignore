@@ -1,0 +1,2 @@
+# Ignore all folders named "my_virtualenv" at any level
+**/my_virtualenv/

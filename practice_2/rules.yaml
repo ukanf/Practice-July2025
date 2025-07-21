@@ -1,0 +1,31 @@
+rules:
+  - name: is_adult
+    type: condition
+    condition: "age >= 18"
+    action: "eligible = True"
+
+  - name: assert_income
+    type: assert
+    condition: "income >= 0"
+    message: "Income cannot be negative"
+
+  - name: compute_tax
+    type: transform
+    action: "tax = income * 0.3"
+
+  - name: route_premium
+    type: route
+    condition: "income > 100000"
+    action: "route = 'premium'"
+
+  - name: score_age
+    type: score
+    action: "score = score + 10 if age >= 30 else score"
+
+  - name: log_info
+    type: log
+    message: "User evaluated with age={{ age }} and income={{ income }}"
+
+  - name: custom_evaluator
+    type: custom
+    function: "check_vip"

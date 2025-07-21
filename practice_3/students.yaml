@@ -1,0 +1,10 @@
+- name: John
+  score: 85
+- name: Jane
+  score: 92
+- name: Doe
+  score: 76
+- name: Alice
+  score: 65
+- name: Bob
+  score: 50
