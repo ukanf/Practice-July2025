@@ -3,28 +3,32 @@ import asyncio
 async def step_1(context):
     print("Executing step 1")
     await asyncio.sleep(1)
-    return {"step1": "done"}
+    return {"step_1": "done"}
 
 async def step_2(context):
     print("Executing step 2")
     await asyncio.sleep(1)
-    return {"step2": "done"}
+    return {"step_2": "done"}
 
 async def step_3(context):
     print("Executing step 3")
     await asyncio.sleep(1)
-    return {"step3": "done"}
+    return {"step_3": "done"}
 
-async def my_step_4(context):
-    print("Executing my_step_4")
-    await asyncio.sleep(1)
-    return {"my_step_4": "done"}
+async def no_dep_step(context):
+    print("Executing no_dep_step")
+    await asyncio.sleep(2)
+    return {"no_dep_step": "done"}
 
 WORKFLOWS = {
     "example_workflow": [
-        ("step_1", step_1),
-        ("step_2", step_2),
-        ("step_3", step_3),
-        ("my_step_4", my_step_4),
+        ("step_1", step_1, []),
+        ("step_2", step_2, ["step_1"]),
+        ("no_dep_step", no_dep_step, []),
+        ("no_dep_step", no_dep_step, []),
+        ("step_3", step_3, ["step_2"]),
+        ("no_dep_step", no_dep_step, []),
+        ("no_dep_step", no_dep_step, []),
+        ("step_2", step_2, ["step_1"]),
     ]
 }

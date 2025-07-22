@@ -58,13 +58,40 @@ maintaining data consistency and enabling seamless collaboration between differe
 
 https://exalate.com/blog/two-way-integration/
 
-id, created_at, first_entry_id, updated_at
-1,11111110,1
-2,11111112,2
-3,11111116,3
-4,11111117,1
-5,11111118,5
-6,11111119,6
+recommendations table
+id, created_at, first_entry_id, recommendation, resource
+1,10,1,resize,VM1
+2,12,2,delete,VM2
+3,15,3,delete,VM3
+4,17,1,resize,VM1
+5,18,5,delete,VM4
+6,19,6,resize,VM5
+
+recommendations_generated
+id, last_successful_recommendation_generated
+1,16
+2,20
+
+to know if ticket created or not check recommendation_ticket_map table
+when making a recommendation, compare some key fields to know if it's repeated or not (same recommendation and same resource being recommended for), if repeated then put first_entry_id as the first recommendation - also, when querying for limit it to search if by created_at - if script runs every 1 week to generate recommendation, then to search for "repeated" recommendations limit it to last_successful_recommendation_generated
+
+tickets table
+id, created_at, status, 
+1,110,created,
+2,112,created,
+3,115,created,
+4,118,closed,
+5,119,closed,
+
+recommendation_ticket_map table
+external_id_recommendation,external_id_ticket
+1,1
+2,2
+3,3
+4,1
+5,5
+6,6
+
 
 
 a distributor to push to 3 party
@@ -72,3 +99,6 @@ a "monitoring" to pull data from the 3 party in a set interval - how can we quer
 GET data FROM users WHERE updated=(from last_pool_time to now)
 
 last_pool_time we keep in our own side to know when was the time of the last successful data pull.
+
+How to resume a execution that failed???
+
