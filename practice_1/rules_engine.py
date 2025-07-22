@@ -2,7 +2,7 @@
 
 import yaml
 
-# Rule Logic Design with Advanced Logic Support
+# Rule Logic Design
 class Rule:
     def __init__(self, name, condition, action):
         self.name = name
@@ -29,7 +29,7 @@ class RulesEngine:
         #     raise ValueError("Each rule must be a dictionary")
         # if not all('name' in rule and 'condition' in rule and 'action' in rule for rule in rules):
         #     raise ValueError("Each rule must contain 'name', 'condition', and 'action' keys")
-        self.rules = [Rule(**rule) for rule in rules]
+        self.rules = [Rule(rule['name'], rule['condition'], rule['action']) for rule in rules]
 
     def run(self, context):
         for rule in self.rules:

@@ -50,8 +50,25 @@ https://github.com/funnel-io/funnel-rules-engine
 
 ## Durable Execution Engine
 
+practice_5
+
 ## Two way sync
 
 maintaining data consistency and enabling seamless collaboration between different platforms. defining sync rules, mapping fields, automating updates, and ensuring secure, real-time data exchange between the platforms
 
 https://exalate.com/blog/two-way-integration/
+
+id, created_at, first_entry_id, updated_at
+1,11111110,1
+2,11111112,2
+3,11111116,3
+4,11111117,1
+5,11111118,5
+6,11111119,6
+
+
+a distributor to push to 3 party
+a "monitoring" to pull data from the 3 party in a set interval - how can we query the 3 party? what are the options we have?
+GET data FROM users WHERE updated=(from last_pool_time to now)
+
+last_pool_time we keep in our own side to know when was the time of the last successful data pull.
