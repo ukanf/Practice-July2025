@@ -54,10 +54,6 @@ A engine that gathers data from different sources, generates recommendations to 
 
 ![alt text](images/overview_simple_system.png)
 
-maintaining data consistency and enabling seamless collaboration between different platforms. defining sync rules, mapping fields, automating updates, and ensuring secure, real-time data exchange between the platforms
-
-https://exalate.com/blog/two-way-integration/
-
 recommendations table
 ```
 id, created_at, recommendation, resource
@@ -115,3 +111,9 @@ We can have partial runs - so what we can do is that for each run to create the 
 How can we improve this? We need to track a few things in the DB:
 - current recommendation we are generating (like the durable workflow engine we need to keep track of the current recommendation/jira ticket being created so we can resume later)
 - ... WIP
+
+#### WIP/Notes
+
+maintaining data consistency and enabling seamless collaboration between different platforms. defining sync rules, mapping fields, automating updates, and ensuring secure, real-time data exchange between the platforms
+
+https://exalate.com/blog/two-way-integration/
