@@ -3,7 +3,7 @@ import uuid
 from db import save_execution, load_execution
 from workflow_steps import WORKFLOWS
 
-class DurableEngine:
+class AsyncDurableEngine:
     _db_lock = asyncio.Lock()  # Class-level lock for DB operations
 
     def __init__(self):
@@ -31,13 +31,16 @@ class DurableEngine:
                 return
             context = execution["step_output"]
         print(f"Running {step_name} in thread for execution {execution_id}")
+        # context is actually not really being used in the function - but we retrieve and send it in case we want to start using it as it would make more sense...
         output = await step_func(context)
-        context.update(output)
+
         async with self._db_lock:
             execution = load_execution(execution_id)
             if execution is None:
                 print(f"Execution {execution_id} not found for step {step_name} after step_func.")
                 return
+            context = execution["step_output"]
+            context.update(output)
             execution["step_output"] = context
             save_execution(execution)
         print(execution)
@@ -55,6 +58,7 @@ class DurableEngine:
 
         if execution["current_step"]:
             step_names = [name for name, *_ in steps]
+            # assuming that current_step ran successfully
             if execution["current_step"] in step_names:
                 current_index = step_names.index(execution["current_step"]) + 1
 
@@ -66,13 +70,13 @@ class DurableEngine:
 
             if len(step_dependencies) == 0:
                 # create new thread for no dependencies, do not wait for completion
-                print(f"Executing {step_name} with no dependencies in a new thread (fire and forget).")
+                print(f"Executing {step_name} with no dependencies in a new thread.")
                 task = asyncio.create_task(self.run_step_in_thread(step_func, execution_id, step_name, context.copy()))
                 running_tasks.append(task)
                 continue
             else:
                 # Wait for all running tasks to complete before checking dependencies
-                if running_tasks:
+                if len(running_tasks) > 0:
                     print("Waiting for all async tasks to complete before checking dependencies...")
                     await asyncio.gather(*running_tasks)
                     running_tasks = []
@@ -81,10 +85,10 @@ class DurableEngine:
                         execution = load_execution(execution_id)
                         context = execution["step_output"]
 
-                unmet_deps = [dep for dep in step_dependencies if dep not in execution["step_output"].keys()]
-                if unmet_deps:
-                    print(f"Skipping {step_name} due to unmet dependencies: {unmet_deps}")
-                    continue
+            unmet_deps = [dep for dep in step_dependencies if dep not in execution["step_output"].keys()]
+            if len(unmet_deps) > 0:
+                print(f"Skipping {step_name} due to unmet dependencies: {unmet_deps}")
+                continue
 
             execution["current_step"] = step_name
             async with self._db_lock:
