@@ -1,4 +1,4 @@
-# CoPlane-Interview
+# Practice...
 
 Repository structure:
 - practice_`<number>`: folder with practice code...
@@ -65,6 +65,7 @@ maintaining data consistency and enabling seamless collaboration between differe
 https://exalate.com/blog/two-way-integration/
 
 recommendations table
+```
 id, created_at, recommendation, resource
 1,10,resize,VM1
 2,12,delete,VM2
@@ -72,11 +73,14 @@ id, created_at, recommendation, resource
 4,17,resize,VM1
 5,18,delete,VM4
 6,19,resize,VM5
+```
 
 recommendations_generated
+```
 id, last_successful_recommendation_generated
 1,16
 2,20
+```
 
 if recommendation, resource are the same, for example in entry 1 and 4 where resize,VM1 == resize,VM1 then it's a repeated recommendation. We should only create the ticket for 1 and then 4 is just the "last_created"
 
@@ -84,21 +88,25 @@ to know if ticket created or not check recommendation_ticket_map table
 when making a recommendation. When querying - limit it to search by created_at - if script runs every 1 week to generate recommendation, then to search for "repeated" recommendations in that limit - we can get the last recommendation date by getting last_successful_recommendation_generated from the "generated recommendations table"
 
 tickets table
+```
 id, created_at, status, 
 1,110,created,
 2,112,created,
 3,115,created,
 4,118,closed,
 5,119,closed,
+```
 
 recommendation_ticket_map table
 id(supressed),recommendation_id,first_recommendation_id,ticket_id
+```
 1,1,1
 2,2,2
 3,3,3
 4,1,1
 5,5,4
 6,6,5
+```
 
 a distributor to push to 3 party
 a "monitoring" to pull data from the 3 party in a set interval - how can we query the 3 party? what are the options we have?
