@@ -8,18 +8,6 @@ Repository structure:
 
 A rule engine uses rules, which are conditional statements, to evaluate inputs. By having rules in a yaml file we can more easily maintain the code for the engine and better scale to use different rules for different purposes (the engine just consumes the rules).
 
-### Practice
-
-#### practice_1
-
-#### practice_2
-
-#### practice_3
-
-#### practice_4
-
-rules engine from pycon...
-
 ### Useful links and Libs..
 
 - Discussion: https://stackoverflow.com/questions/53421492/python-rule-based-engine
@@ -51,6 +39,8 @@ https://github.com/funnel-io/funnel-rules-engine
 ## Durable Execution Engine
 
 practice_5
+
+Implemented 2 types: just a simple for sync jobs and a more complex one with support for dependencies (if no dependency then it runs async until a job with dependency then it waits for all the async jobs to finish)
 
 ## Two way sync
 
@@ -120,4 +110,4 @@ We can have partial runs - so what we can do is that for each run to create the 
 
 How can we improve this? We need to track a few things in the DB:
 - current recommendation we are generating (like the durable workflow engine we need to keep track of the current recommendation/jira ticket being created so we can resume later)
-- 
+- ... WIP
