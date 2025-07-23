@@ -1,8 +1,10 @@
 # Practice...
 
 Repository structure:
-- practice_`<number>`: folder with practice code...
-- interview: folder used in the interview
+- durable_execution_engine: folder with the durable execution engines
+- images: folder with images - mostly used in this readme
+- rules_engine: folder with different rules engines
+- README.md: overview of this project + some info on two way sync app
 
 ## What is a rule engine?
 
