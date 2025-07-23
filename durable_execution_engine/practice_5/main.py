@@ -8,7 +8,7 @@ from engine_simple import SimpleDurableEngine
 async def main():
     start_time = time.time()
     init_db()
-    engine_kind = "async"  # or "simple" for the synchronous version
+    engine_kind = "async"
     if engine_kind == "async":
         engine = AsyncDurableEngine()
     elif engine_kind == "simple":
