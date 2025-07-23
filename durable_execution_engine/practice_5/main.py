@@ -20,11 +20,11 @@ async def main():
     execution_id = engine.start_workflow("harder_async_workflow")
     print(f"Started workflow: {execution_id}")
 
-    # Resume (or run) workflow
+    # Run the workflow
     await engine.resume(execution_id)
 
     end_time = time.time()
-    print(f"Execution time: {end_time - start_time:.4f} seconds")
+    print(f"Execution time: {end_time - start_time:.2f} seconds")
 
 if __name__ == "__main__":
     asyncio.run(main())
