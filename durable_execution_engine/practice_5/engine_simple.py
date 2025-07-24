@@ -14,6 +14,8 @@ class SimpleDurableEngine:
             "state": "running",
             "current_step": None,
             "step_output": {},
+            "engine_type": "",  # This will be set only when the workflow is completed
+            "execution_time": 0.0 # This will be set only when the workflow is completed
         }
         save_execution(execution)
         return execution_id
