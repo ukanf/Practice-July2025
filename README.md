@@ -46,6 +46,15 @@ Implemented 2 types:
 - just a simple one to execute jobs sequentially without support for parallel execution.
 - A more complex one with support for parallel execution and we can define dependencies for each job - if no dependency then it runs async until it hits a job with dependency then it waits for all the async jobs to finish - it then checks if depedencies are met and it either executes or moves on to the next job.
 
+### Simple Engine
+
+![alt text](images/async_exec_engine.png)
+
+### Async Engine
+
+![alt text](images/simple_exec_engine.png)
+
+
 ## Two way sync
 
 ### FinOps recommendation engine
