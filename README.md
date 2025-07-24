@@ -48,12 +48,11 @@ Implemented 2 types:
 
 ### Simple Engine
 
-![alt text](images/async_exec_engine.png)
+![alt text](images/simple_exec_engine.png)
 
 ### Async Engine
 
-![alt text](images/simple_exec_engine.png)
-
+![alt text](images/async_exec_engine.png)
 
 ## Two way sync
 
