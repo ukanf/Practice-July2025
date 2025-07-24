@@ -40,7 +40,10 @@ class AsyncDurableEngine:
                 print(f"Execution {execution_id} not found for step {step_name} after step_func.")
                 return
             context = execution["step_output"]
-            context.update(output)
+            if output in context.keys():
+                context[output] += 1
+            else:
+                context[output] = 1
             execution["step_output"] = context
             save_execution(execution)
         print(execution)
@@ -60,7 +63,7 @@ class AsyncDurableEngine:
             step_names = [name for name, *_ in steps]
             # assuming that current_step ran successfully
             if execution["current_step"] in step_names:
-                current_index = step_names.index(execution["current_step"]) + 1
+                current_index = step_names.index(execution["current_step"])
 
         context = execution["step_output"]
         running_tasks = []
@@ -96,7 +99,11 @@ class AsyncDurableEngine:
 
             print(f"Running {step_name} for execution {execution_id}")
             output = await step_func(context)
-            context.update(output)
+            if output in context.keys():
+                context[output] += 1
+            else:
+                context[output] = 1
+
             async with self._db_lock:
                 execution = load_execution(execution_id)
                 execution["step_output"] = context
