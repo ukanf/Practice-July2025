@@ -1,11 +1,14 @@
 # rules_engine.py
 
 import yaml
+from actions import ACTION_MAP
 
 class RulesEngine:
     def __init__(self, rules):
         self.rules = []
         for rule in rules:
+            if rule['action'] not in ACTION_MAP:
+                raise ValueError(f"Action '{rule['action']}' not found in ACTION_MAP")
             action_func = ACTION_MAP[rule['action']]
             rule_obj = Rule(rule['name'], rule['condition'], action_func)
             self.rules.append(rule_obj)
@@ -37,27 +40,3 @@ def load_rules_from_yaml(file_path):
         data = yaml.safe_load(f)
         # data is an array of rule dictionaries
         return data["rules"]
-
-
-# Define your action functions
-def action_flag_rich_minor(context):
-    context['flag'] = 'suspicious'
-    context['note'] = 'Minor with high income'
-    return context
-
-def action_reject_minor(context):
-    context['eligible'] = False
-    context['message'] = 'Rejected due to age'
-    return context
-
-def action_approve_adult_with_income(context):
-    context['eligible'] = True
-    context['message'] = 'Approved based on age and income'
-    return context
-
-# Map action names to functions
-ACTION_MAP = {
-    'action_flag_rich_minor': action_flag_rich_minor,
-    'action_reject_minor': action_reject_minor,
-    'action_approve_adult_with_income': action_approve_adult_with_income,
-}

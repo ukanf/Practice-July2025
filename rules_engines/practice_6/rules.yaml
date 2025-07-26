@@ -1,7 +1,12 @@
+# Sequence of rules is VERY IMPORTANT as it gets overwritten by the next rule
 rules:
   - name: approve_adult_with_income
     condition: "age >= 18 and income >= 50000"
     action: action_approve_adult_with_income
+  
+  - name: reject_older_adult
+    condition: "age > 65"
+    action: action_reject_older_adult
 
   - name: reject_minor
     condition: "age < 18"
