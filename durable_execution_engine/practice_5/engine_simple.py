@@ -38,7 +38,7 @@ class SimpleDurableEngine:
         context = execution["step_output"]
 
         for i in range(current_index, len(steps)):
-            step_name, step_func, step_dependencies = steps[i]
+            step_name, step_func, _ = steps[i]
             execution["current_step"] = step_name
             save_execution(execution)
 

@@ -1,0 +1,12 @@
+rules:
+  - name: approve_adult_with_income
+    condition: "age >= 18 and income >= 50000"
+    action: action_approve_adult_with_income
+
+  - name: reject_minor
+    condition: "age < 18"
+    action: action_reject_minor
+
+  - name: flag_rich_minor
+    condition: "age < 18 and income > 100000"
+    action: action_flag_rich_minor
