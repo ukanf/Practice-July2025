@@ -1,14 +1,33 @@
 # Practice...
 
+## Table of Contents
+
+- [Practice...](#practice)
+  - [Table of Contents](#table-of-contents)
+  - [What is a rule engine?](#what-is-a-rule-engine)
+    - [Useful links and Libs..](#useful-links-and-libs)
+    - [Videos...](#videos)
+      - [PyCon Sweden](#pycon-sweden)
+  - [Durable Execution Engine](#durable-execution-engine)
+    - [Simple Engine](#simple-engine)
+    - [Async Engine](#async-engine)
+  - [Two way sync](#two-way-sync)
+    - [FinOps recommendation engine](#finops-recommendation-engine)
+      - [WIP/Notes](#wipnotes)
+  - [Infrastructure deployment automation and orchestration](#infrastructure-deployment-automation-and-orchestration)
+
 Repository structure:
 - durable_execution_engine: folder with the durable execution engines
 - images: folder with images - mostly used in this readme
 - rules_engine: folder with different rules engines
-- README.md: overview of this project + some info on two way sync app
+- README.md: overview of this project + some info on two way sync
+
 
 ## What is a rule engine?
 
 A rule engine uses rules, which are conditional statements, to evaluate inputs. By having rules in a yaml file we can more easily maintain the code for the engine and better scale to use different rules for different purposes (the engine just consumes the rules).
+
+![overview rules engine](images/overview_rules_engine.png)
 
 ### Useful links and Libs..
 
@@ -48,11 +67,11 @@ Implemented 2 types:
 
 ### Simple Engine
 
-![alt text](images/simple_exec_engine.png)
+![Simple exec engine](images/simple_exec_engine.png)
 
 ### Async Engine
 
-![alt text](images/async_exec_engine.png)
+![Async exec engine](images/async_exec_engine.png)
 
 ## Two way sync
 
@@ -60,7 +79,7 @@ Implemented 2 types:
 
 A engine that gathers data from different sources, generates recommendations to save money, then distributes these recommendations as tickets in different Jira boards to be assigned to the owner of that infrastructure/resource. It also syncs back from Jira to the engine itself to maintain the state of the ticket in our DB.
 
-![alt text](images/overview_simple_system.png)
+![Simple two way system](images/overview_simple_system.png)
 
 recommendations table
 ```
@@ -125,3 +144,7 @@ How can we improve this? We need to track a few things in the DB:
 maintaining data consistency and enabling seamless collaboration between different platforms. defining sync rules, mapping fields, automating updates, and ensuring secure, real-time data exchange between the platforms
 
 https://exalate.com/blog/two-way-integration/
+
+## Infrastructure deployment automation and orchestration
+
+We would be probably looking into CI/CD and using the info from state file

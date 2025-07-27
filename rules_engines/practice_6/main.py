@@ -8,12 +8,12 @@ if __name__ == "__main__":
 
     my_rules_engine = RulesEngine(rules)
 
-    for rule in my_rules_engine.rules:
-        print(f"Initialized Rule: {rule.name}")
-        print(f"Rule Action: {rule.action}")
-        print(f"Rule Condition: {rule.condition}")
-        print("-" * 40)
+    # for rule in my_rules_engine.rules:
+    #     print(f"Initialized Rule: {rule.name}")
+    #     print(f"Rule Action: {rule.action}")
+    #     print(f"Rule Condition: {rule.condition}")
+    #     print("-" * 40)
 
-    input_data = {"age": 30, "income": 70000}
+    input_data = {"age": 66, "income": 70000}
     result = my_rules_engine.run(input_data.copy())
     print("Final Result:", result)
