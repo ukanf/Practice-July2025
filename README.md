@@ -8,6 +8,7 @@
     - [Useful links and Libs..](#useful-links-and-libs)
     - [Videos...](#videos)
       - [PyCon Sweden](#pycon-sweden)
+    - [Concrete example](#concrete-example)
   - [Durable Execution Engine](#durable-execution-engine)
     - [Simple Engine](#simple-engine)
     - [Async Engine](#async-engine)
@@ -15,6 +16,8 @@
     - [FinOps recommendation engine](#finops-recommendation-engine)
       - [WIP/Notes](#wipnotes)
   - [Infrastructure deployment automation and orchestration](#infrastructure-deployment-automation-and-orchestration)
+    - [Orchestrating Infrastructure](#orchestrating-infrastructure)
+    - [Oschestrating Containers](#oschestrating-containers)
 
 Repository structure:
 - durable_execution_engine: folder with the durable execution engines
@@ -56,6 +59,12 @@ https://martinfowler.com/bliki/RulesEngine.html
 https://pypi.org/project/funnel-rules-engine/
 
 https://github.com/funnel-io/funnel-rules-engine
+
+### Concrete example
+
+https://coplane.com/perspectives/building_reliable_ai
+
+practice_7
 
 ## Durable Execution Engine
 
@@ -147,4 +156,30 @@ https://exalate.com/blog/two-way-integration/
 
 ## Infrastructure deployment automation and orchestration
 
-We would be probably looking into CI/CD and using the info from state file
+We would probably be looking into CI/CD and using the info from state file.. rules in OPA as part of the pipeline to enforce some of our rules..
+
+Important things in any pipeline:
+- Security scans
+  - Vulnerabilities
+  - Secrets
+- Tests
+  - passing unit tests
+  - functional
+  - integration
+  - end-2-end
+  - smoke..
+- Workspace config:
+  - tracking branch/tag..
+  - auto-apply
+  - auto-apply run triggers (cascade changes into other workspaces that are orchestrating resources that must be changed in case a previous workspace was modified)
+  - a workspace with "global outputs" to help orchestrate
+    - Remote state sharing organization wide.
+    - have several "global" workspaces, 1 for global networks, 1 for users info, etc and then from the "global_outputs" we can agreggate those global ones into only one.
+  - reusable modules - publish them in a resgistry, version them and make sure we have a workflow to orchestrate changes in all repositories
+
+spacelift: https://spacelift.io/
+terragrunt: https://terragrunt.gruntwork.io/
+
+### Orchestrating Infrastructure
+
+### Oschestrating Containers

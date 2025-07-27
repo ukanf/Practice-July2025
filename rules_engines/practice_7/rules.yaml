@@ -1,0 +1,21 @@
+# Sequence of rules is VERY IMPORTANT as it gets overwritten by the next rule
+rules:
+  - name: approve_utilization_customerage
+    condition: "utilization < 0.80 and customer_age > 180"
+    action: action_approve_utilization_customerage
+  
+  - name: approve_utilization_newcustomer
+    condition: "utilization < 0.50 and customer_age <= 180"
+    action: action_approve_utilization_newcustomer
+
+  - name: refer_utilization
+    condition: "utilization > 0.80 and utilization < 1.00"
+    action: action_refer_utilization
+
+  - name: decline_utilization
+    condition: "utilization > 1.00"
+    action: action_decline_utilization
+
+  - name: alwaysrefer_customer
+    condition: "customer_name in credit_watch_list"
+    action: action_alwaysrefer_customer
