@@ -81,6 +81,8 @@ class AsyncDurableEngine:
                 # Wait for all running tasks to complete before checking dependencies
                 if len(running_tasks) > 0:
                     print("Waiting for all async tasks to complete before checking dependencies...")
+                    # gather does not provide a way to handle exceptions in the tasks, so we just wait for them to finish
+                    # TODO: look into TaskGroup
                     await asyncio.gather(*running_tasks)
                     running_tasks = []
                     # Reload execution to get updated step_output

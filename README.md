@@ -16,8 +16,9 @@
     - [FinOps recommendation engine](#finops-recommendation-engine)
       - [WIP/Notes](#wipnotes)
   - [Infrastructure deployment automation and orchestration](#infrastructure-deployment-automation-and-orchestration)
+    - [Some vendors..](#some-vendors)
     - [Orchestrating Infrastructure](#orchestrating-infrastructure)
-    - [Oschestrating Containers](#oschestrating-containers)
+      - [SaaS vs Dedicated vs Self-Hosted](#saas-vs-dedicated-vs-self-hosted)
 
 Repository structure:
 - durable_execution_engine: folder with the durable execution engines
@@ -168,7 +169,7 @@ Important things in any pipeline:
   - integration
   - end-2-end
   - smoke..
-- Workspace config:
+- Terraform and/or tf Workspace config:
   - tracking branch/tag..
   - auto-apply
   - auto-apply run triggers (cascade changes into other workspaces that are orchestrating resources that must be changed in case a previous workspace was modified)
@@ -177,9 +178,32 @@ Important things in any pipeline:
     - have several "global" workspaces, 1 for global networks, 1 for users info, etc and then from the "global_outputs" we can agreggate those global ones into only one.
   - reusable modules - publish them in a resgistry, version them and make sure we have a workflow to orchestrate changes in all repositories
 
+### Some vendors..
+
 spacelift: https://spacelift.io/
 terragrunt: https://terragrunt.gruntwork.io/
 
 ### Orchestrating Infrastructure
 
-### Oschestrating Containers
+SaaS vs Dedicated vs Self-Hosted
+
+Control plane always SaaS? Data stored centrally? Maintenance? Cost?
+
+#### SaaS vs Dedicated vs Self-Hosted
+
+| Feature/Question         | SaaS                          | Dedicated                      | Self-Hosted                   |
+|-------------------------|-------------------------------|--------------------------------|-------------------------------|
+| **Control plane**       | Always managed by provider    | Can be managed or customer     | Fully managed by customer     |
+| **Data storage**        | Centrally (provider's cloud)  | Can be isolated per customer   | On-premises or customer cloud |
+| **Maintenance**         | Handled by provider           | Shared or customer responsibility | Fully customer responsibility |
+| **Cost**                | Subscription, pay-as-you-go   | Higher, often per-customer     | Upfront infra + maintenance   |
+
+**Questions:**
+- Control plane always SaaS?
+- Data stored centrally?
+- Maintenance?
+- Scalability?
+- Cost for SaaS is usually lower as infra is shared
+
+**Notes:**
+- SaaS hybrid with namespace isolation for workloads and other types of isolation for data
