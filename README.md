@@ -19,6 +19,7 @@
     - [Some vendors..](#some-vendors)
     - [Orchestrating Infrastructure](#orchestrating-infrastructure)
       - [SaaS vs Dedicated vs Self-Hosted](#saas-vs-dedicated-vs-self-hosted)
+- [IT 1](#it-1)
 
 Repository structure:
 - durable_execution_engine: folder with the durable execution engines
@@ -198,12 +199,14 @@ Control plane always SaaS? Data stored centrally? Maintenance? Cost?
 | **Maintenance**         | Handled by provider           | Shared or customer responsibility | Fully customer responsibility |
 | **Cost**                | Subscription, pay-as-you-go   | Higher, often per-customer     | Upfront infra + maintenance   |
 
-**Questions:**
+**Other...**
 - Control plane always SaaS?
 - Data stored centrally?
 - Maintenance?
 - Scalability?
 - Cost for SaaS is usually lower as infra is shared
-
-**Notes:**
 - SaaS hybrid with namespace isolation for workloads and other types of isolation for data
+
+# IT 1
+
+practice_8

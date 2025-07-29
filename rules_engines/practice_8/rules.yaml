@@ -1,0 +1,13 @@
+# Sequence of rules is VERY IMPORTANT as it gets overwritten by the next rule
+rules:
+  - name: validate_inputs_in_input_data
+    condition: "invoice_number and issue_date and vendor_id"
+    action: action_validate_inputs_in_input_data
+
+  - name: validate_value_range_total_amount
+    condition: "total_amount >= 0 and total_amount <= 2000"
+    action: action_validate_value_range_total_amount
+
+  - name: validate_paid_status
+    condition: "status in ['paid']"
+    action: action_validate_paid_status

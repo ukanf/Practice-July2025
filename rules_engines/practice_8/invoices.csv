@@ -1,0 +1,12 @@
+invoice_number,issue_date,due_date,vendor_name,vendor_id,total_amount,currency,status,line_items
+INV-000001,2024-07-15,2024-08-14,TechSupplies Inc,VS-001,1500.00,USD,pending,3
+INV-000002,2024-07-16,2024-08-15,Office Depot,VS-002,750.50,USD,paid,5
+INV-000003,2024-07-17,2024-08-16,GlobalShip Logistics,VS-003,2000.75,USD,pending,2
+INV-000004,2024-07-18,2024-08-17,CloudServe Solutions,VS-004,5000.00,USD,overdue,1
+INV-000005,2024-07-19,2024-08-18,Acme Corporation,VS-005,1250.25,USD,paid,4
+CM-000006,2024-07-20,2024-08-19,TechSupplies Inc,VS-001,-500.00,USD,pending,1
+INV-000007,2024-07-21,2024-08-20,Marketing Wizards,VS-006,3000.00,USD,pending,2
+INV-000008,2024-07-22,2024-08-21,IT Consulting Group,VS-007,4500.75,USD,paid,3
+INV-000009,2024-07-23,2024-08-22,Office Supplies Co,VS-008,800.00,USD,pending,6
+INV-000010,2024-07-24,2024-08-23,Global Shipping LLC,VS-009,1750.50,USD,overdue,2
+'',2024-07-24,2024-08-23,Global Shipping LLC,VS-009,1750.50,USD,overdue,2
