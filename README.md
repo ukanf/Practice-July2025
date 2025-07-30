@@ -20,6 +20,8 @@
     - [Orchestrating Infrastructure](#orchestrating-infrastructure)
       - [SaaS vs Dedicated vs Self-Hosted](#saas-vs-dedicated-vs-self-hosted)
 - [IT 1](#it-1)
+- [IT 2](#it-2)
+- [IT 3](#it-3)
 
 Repository structure:
 - durable_execution_engine: folder with the durable execution engines
@@ -210,3 +212,9 @@ Control plane always SaaS? Data stored centrally? Maintenance? Cost?
 # IT 1
 
 practice_8
+
+# IT 2
+
+# IT 3
+
+practice_9
