@@ -60,10 +60,10 @@ class AsyncDurableEngine:
         current_index = 0
 
         if execution["current_step"]:
-            step_names = [name for name, *_ in steps]
+            step_id = [name for name, *_ in steps]
             # assuming that current_step ran successfully
-            if execution["current_step"] in step_names:
-                current_index = step_names.index(execution["current_step"])
+            if execution["current_step"] in step_id:
+                current_index = step_id.index(execution["current_step"])
 
         context = execution["step_output"]
         running_tasks = []

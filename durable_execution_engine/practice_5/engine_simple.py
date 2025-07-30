@@ -30,10 +30,10 @@ class SimpleDurableEngine:
         current_index = 0
 
         if execution["current_step"]:
-            step_names = [name for name, _, _ in steps]
-            print(step_names)
-            if execution["current_step"] in step_names:
-                current_index = step_names.index(execution["current_step"])
+            step_id = [name for name, _, _ in steps]
+            print(step_id)
+            if execution["current_step"] in step_id:
+                current_index = step_id.index(execution["current_step"])
 
         context = execution["step_output"]
 

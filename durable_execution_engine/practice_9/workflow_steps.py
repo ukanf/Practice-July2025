@@ -27,11 +27,12 @@ async def no_dep_step(context=None):
 
 WORKFLOWS = {
     "workflows_1": [
-        ("step_1", step_1, []),
-        ("step_2", step_2, ["step_1"]),
-        ("no_dep_step", no_dep_step, []),
-        ("step_3", step_3, ["step_2"]),
-        ("no_dep_step", no_dep_step, []),
-        ("step_2", step_2, ["step_1"]),
+        # using execution_id instead of step_name
+        ("1", step_1, []),
+        ("2", step_2, ["step_1"]),
+        ("3", no_dep_step, []),
+        ("4", step_3, ["step_2"]),
+        ("5", no_dep_step, []),
+        ("6", step_2, ["step_1"]),
     ]
 }

@@ -30,10 +30,10 @@ class SimpleDurableEngine:
         current_index = 0
 
         if execution["current_step"]:
-            step_names = [name for name, _, _ in steps]
-            print(step_names)
-            if execution["current_step"] in step_names:
-                current_index = step_names.index(execution["current_step"])
+            step_id = [id for id, _, _ in steps]
+            print(step_id)
+            if execution["current_step"] in step_id:
+                current_index = step_id.index(execution["current_step"])
 
         context = execution["step_output"]
 
@@ -42,7 +42,7 @@ class SimpleDurableEngine:
             execution["current_step"] = step_name
             save_execution(execution)
 
-            print(f"Running {step_name} for execution {execution_id}")
+            print(f"Running ID: {step_name} for execution {execution_id}")
             output = await step_func(context) # output = "step_name"
             if output in context.keys():
                 context[output] += 1
