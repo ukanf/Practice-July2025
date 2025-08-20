@@ -21,6 +21,7 @@
       - [SaaS vs Dedicated vs Self-Hosted](#saas-vs-dedicated-vs-self-hosted)
 - [SQL vs NoSQL? - Actually, Relational and NON-Relational databases](#sql-vs-nosql---actually-relational-and-non-relational-databases)
   - [Relational DB](#relational-db)
+    - [Some interesting details](#some-interesting-details)
   - [NON-Relational DB](#non-relational-db)
 
 Repository structure:
@@ -232,6 +233,10 @@ Common features:
 - Configurable isolation levels - ACID
   - atomicity, consistency, isolation, durability
 
+### Some interesting details
+
+- Skip lock - allows to avoid deadlocks by skipping locked rows
+
 Scale vertically
 
 ## NON-Relational DB
@@ -240,5 +245,9 @@ Better data locality but has repeated data.. Keep all the data we need in one si
 Good to use when data can be kept as separate messages/records - no relationship between them.
 
 Good to scale horizontally - Kind of a key value store.. easier to split workload and only part of DB owned by a workload - diff partitions - where is an item stored? Key value store.. key determines in which partition the item is stored - where to store new items and retrieve existing one? Hash and then go to the host assign to that range's hash.
+
+Schemaless - each item does not need to have the same structure... pretty good if app and data structure is constantly changing/evolving.
+
+Bad for data analysis... eventually consistent..
 
 <!-- https://www.mongodb.com/resources/basics/scaling -->
