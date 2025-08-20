@@ -19,9 +19,9 @@
     - [Some vendors..](#some-vendors)
     - [Orchestrating Infrastructure](#orchestrating-infrastructure)
       - [SaaS vs Dedicated vs Self-Hosted](#saas-vs-dedicated-vs-self-hosted)
-- [IT 1](#it-1)
-- [IT 2](#it-2)
-- [IT 3](#it-3)
+- [SQL vs NoSQL? - Actually, Relational and NON-Relational databases](#sql-vs-nosql---actually-relational-and-non-relational-databases)
+  - [Relational DB](#relational-db)
+  - [NON-Relational DB](#non-relational-db)
 
 Repository structure:
 - durable_execution_engine: folder with the durable execution engines
@@ -209,12 +209,36 @@ Control plane always SaaS? Data stored centrally? Maintenance? Cost?
 - Cost for SaaS is usually lower as infra is shared
 - SaaS hybrid with namespace isolation for workloads and other types of isolation for data
 
-# IT 1
 
-practice_8
+# SQL vs NoSQL? - Actually, Relational and NON-Relational databases
+<!-- ref: https://www.youtube.com/watch?v=YgTLqO54UOA  -->
+SQL - query language; and NoSQL - refers to non-relational databases that usually use different languages...
 
-# IT 2
+## Relational DB
+Diff tables and each table represents one type of data model. Many to many relationships: foreign keys.. used to represent relationship between rows in diff tables - "normalized".
+Can levarage Join - Left, inner and outer?
 
-# IT 3
+Downside: distributed transactions can be slow.
 
-practice_9
+Good for data represented by relationship... 
+
+<!-- ### MySQL and PostgreSQL -->
+<!-- https://www.youtube.com/watch?v=x6-RN-_i5Xs -->
+relational/normalized data - one reference to the one piece of data and have it stay consistent across the database.
+
+Common features:
+- Tend to be B-Tree based for indexing. (better reads?)
+- Single leader replication. (avoid write conflicts?) but multi-leader replication is also possible.
+- Configurable isolation levels - ACID
+  - atomicity, consistency, isolation, durability
+
+Scale vertically
+
+## NON-Relational DB
+Better data locality but has repeated data.. Keep all the data we need in one single record. Will lead to more writes as well as it's denormalized. Writes can be pretty complicated if we have to write the data in multiple places 
+
+Good to use when data can be kept as separate messages/records - no relationship between them.
+
+Good to scale horizontally - Kind of a key value store.. easier to split workload and only part of DB owned by a workload - diff partitions - where is an item stored? Key value store.. key determines in which partition the item is stored - where to store new items and retrieve existing one? Hash and then go to the host assign to that range's hash.
+
+<!-- https://www.mongodb.com/resources/basics/scaling -->
